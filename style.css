@@ -1,65 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Sonsie+One&display=swap');
 
-body {
+html body {
     font-family: "Jost";
-    font-size: x-large;
+    margin: 0;
+    overflow-x: auto;
 }
+
 
 .grid-container {
-    display: grid;
-    grid-template-columns: 300px 900px 400px;
-    max-width: 1600px;
-    gap: 1rem;
-    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* min-width: 1100px; */
+    gap: 10px;
+    margin: 0 auto;
+    padding: 10px 10px;
+    height: auto;
 }
 
-.heading {
+.ui-header {
     background-color: #2C2C2C;
     color: whitesmoke;
     padding: 5px 0px 5px 25px;
+    font-size: 27px;
+    font-weight: 500;
+    border-bottom: double 4px rgb(194, 192, 192);
 }
+
 #subtitle{
     color: #2979FF;
 }
 
-.list-container li {
-display: block;
-padding: 40px 0px 40px 20px;
-border: 3px solid #2979FF;
-background-color: rgb(194, 192, 192);
-/* box-shadow: -10px 5px 5px #f39e00; */
-border-radius: 3%;
-width: 100%;
-margin-bottom: 10px;
-margin-top: 10px;
-font-size: x-large;
-transition: box-shadow 0.2s ease;
+.first-column li{
+    display: flex;
+    border-radius: 100px;
+    border: 2px solid #2C2C2C;
+    background-color: rgb(194, 192, 192);
+    width: 150px;
+    margin: 15px 0px;
+    padding: 20px 20px;
+    font-size: 21px;
+    font-weight: 500;
+    transition: box-shadow 0.2s ease;
 }
-.list-container li:hover {
-    box-shadow:-10px 10px 10px #f39e00
+
+.first-column li:hover {
+    box-shadow:-5px 5px 5px #2979FF
 }
 
 ul li::before {
     content: "";
 }
-ul {
-    padding-left: 0px;
-    padding-right: 20px;
+
+.first-column {
+    flex: 0 0 200px;
 }
 
 .second-column {
-    padding: 10px 125px;
+    flex-direction: column;
+    padding: 15px;
+    border: solid 2px orange;
+    min-width: 300px;
+}
+.lrgImg {
+    display: flex;
+    max-width: 100%
+}
+
+img {
+    max-width: 100%
 }
 
 .third-column {
     display: grid;
+    width: 400px;
+    padding: 15px;
     grid-template-rows: min-content min-content;
+    border: solid 2px yellowgreen;
 }
+
 .log-container {
     text-align: end;
 }
-
 .form-label {
     margin-right: 4px;
     width: 200px;
@@ -67,22 +90,22 @@ ul {
     /* padding-right: 10px; */
 }
 
-
 /* testing orientation of stat box */
-
 .stat-container {
     border: 1px solid#f39e00;
     background-color: #2C2C2C;
+    width: fit-content;
 }
 
 .card {
     border: 1px solid red;
+    width: 350px;
 }
 .title  {
     border: 1px solid green;
     background-color: white;
-    padding: 10px 0px 10px 20px;
-    font-size: xx-large;
+    padding: 10px 10px;
+    font-size: 21px;
 }
 
 .stats {
@@ -90,56 +113,68 @@ ul {
     color: whitesmoke;
     font-size: x-large;
 }
+
 /* Styling for the muscles used elements */
-#primary-secondary span {
-    border: 1px dotted black;
+#muscle-targets span, #secondary span {
+    font-size: medium;
+    /* border: 1px dotted black; */
     margin-right: 10px;
     padding: 5px 5px;
-    border-radius: 10px;
-    background-color: red;
+    border-radius: 100px;
+    display: inline-block;
+}
+
+#prim {
+    background-color: #FF7043 ;
+}
+
+#sec {
+    background-color: #123524;
+}
+
+#primary {
+    width: 300px
 }
 
 #currentMax {
-    font-size: xx-large;
+    font-size: 27px;
     padding-left: 40px;
     font-weight: bold;
 }
 
-/* Quick Log oreintation */
+/* Quick Log orientation */
 .form-group {
-    margin: 30px;
-    font-size: x-large;
+    display: flex;
+    margin: 20px 20px;
+    font-size: 27px;
 
 }
 .form-group input {
     width: 60px;
     height: 50px;
     text-align: center;
-    font-size: x-large;
+    font-size: 27px;
     border-radius: 10px;
     margin-right: 150px;
 }
 
-button {
-    width: 150px;
-    height: 50px;
-    margin-left: 180px;
-    margin-right: 20px;
-    border-radius: 10px;
-    font-size: x-large;
+
+
+@media (min-width: 768px) {
+    .grid-container {
+        flex-direction: row;
+        min-width: 530px;
+    }
+    .first-column, .second-column, .third-column {
+        width: 100%;
+    }
 }
 
-.quick-log-input {
-    background-color: rgb(194, 192, 192);
-    padding-bottom: 20px;
-}
-
-.value {
-    font-size: xx-large;
-    font-weight: bold;
-}
-
-img {
-    width: 100%;
-    height: 100%;
+@media (min-width: 1135px) {
+    .grid-container {
+        margin: 0 auto;
+    }
+    .second-column, .third-column {
+        width: 400px;
+    }
 }
