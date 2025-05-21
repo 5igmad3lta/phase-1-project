@@ -1,3 +1,5 @@
+let unit = "kg";
+let isLbs = false;
 document.addEventListener('DOMContentLoaded', () => {
 fetch("http://localhost:3000/exercises")
   .then(response => response.json())
@@ -18,8 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function handleSubmit(weight, sets, reps) {
+  let conversion = checkForConversion(weight)
+ 
   let id = document.querySelector('div.title').id;
-  console.log(id)
+  console.log(conversion)
   fetch(`http://localhost:3000/exercises/${id}`,{
     method: "PATCH",
     headers:{
@@ -29,31 +33,44 @@ function handleSubmit(weight, sets, reps) {
     body: JSON.stringify({
       sets: sets,
       reps: reps,
-      max: weight
+      max: conversion
     })
   })
     .then(res => res.json())
     .then(data => updateLog(data))
 }
 
+function checkForConversion(number) {
+  if (isLbs) {
+    return Math.round(number * 0.453);
+  } else {
+    return number;
+  }
+}
+
+function kilogramsToPounds(number) {
+  if (isLbs) {
+    return Math.round(number * 2.205)
+  } else {
+    return number
+  }
+}
+
 function updateLog(data) {
-  console.log('before update')
   let volume = parseInt(document.querySelector('span#volume').textContent);
+  volume = checkForConversion(volume);
   let indicator = document.querySelector('span#difference');
   indicator.textContent = "";
-  console.log('before if statement')
-  console.log(indicator)
   if(data.max) {
-    let newVolume = parseInt((data.max * data.reps)* data.sets);
-    const difference = newVolume - volume;
-    console.log(difference)
+    let newVolume = parseInt((data.max * data.reps)* data.sets - volume);
+    let difference = kilogramsToPounds(newVolume);
+    renderPage(data)
     if(difference > 0) {
-      console.log()
-      indicator.textContent = " ▲" + difference + " kg";
+      indicator.textContent = " ▲" + difference + " " + unit;
       indicator.className = "positive"
       console.log(indicator)
     } else if ( difference < 0) {
-      indicator.textContent = " ▼" + Math.abs(difference) + " kg";
+      indicator.textContent = " ▼" + Math.abs(difference) + " " + unit;
       indicator.className = "negative"
       console.log(indicator)
     } else {
@@ -61,7 +78,6 @@ function updateLog(data) {
       console.log(indicator)
     }
   }
-   renderPage(data)
 }
 
 function renderDefault(data) {
@@ -92,13 +108,21 @@ function activeStatus(data) {
 
 function renderPage(data) {
   activeStatus(data);
+  document.getElementById('difference').textContent = "";
   document.getElementById('lrgImg').src = data.image;
   document.querySelector('div.title').textContent = data.name.toUpperCase();
   document.querySelector('div.title').id = data.id;
   document.querySelector('span#sets').textContent = data.sets;
   document.querySelector('span#reps').textContent = data.reps;
-  document.querySelector('span#currentMax').textContent = data.max;
-  document.querySelector('span#volume').textContent = parseInt((data.max * data.reps) * data.sets) + ' kg';
+  let total = document.querySelector('span#volume')
+  let max = document.getElementById('currentMax');
+  if (isLbs) {
+    max.textContent = Math.round(data.max * 2.205) + " " + unit;
+    total.textContent = Math.round((data.max * 2.205) * data.reps) * data.sets + " " + unit;
+  } else if (!isLbs) {
+    max.textContent = data.max + " " + unit;
+    total.textContent = (data.max * data.reps) * data.sets + " " + unit;
+  }
   const instructions = document.getElementById('instruction');
   instructions.innerHTML = "";
   data.instructions.forEach(line => {
@@ -127,4 +151,31 @@ function createTag(data, target) {
   })
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('btn');
+  const btnbox = document.getElementById('button-box');
+  btnbox.addEventListener('click', () => {
+    let form = document.querySelector('input#weight')
+    let id = document.querySelector('div.title').id
+    if(unit === 'kg') {
+      btn.style.left = '50px';
+      unit = 'lb';
+      isLbs = true;
+      form.placeholder = unit;
+    } else if (unit === 'lb') {
+      btn.style.left = '3px';
+      unit = 'kg';
+      isLbs = false
+      form.placeholder = unit;
+    }
+    convertUnits(id);
+  })
+})
 
+function convertUnits(id) {
+  fetch(`http://localhost:3000/exercises/${id}`)
+  .then(res => res.json())
+  .then(data => renderPage(data))
+  }
+
+// 1kg = 2.205lbs

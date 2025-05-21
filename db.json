@@ -19,9 +19,9 @@
       "secondary": [
         "Triceps"
       ],
-      "sets": "12",
+      "sets": "1",
       "reps": "1",
-      "max": "10",
+      "max": 20,
       "image": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Bench-Press.gif"
     },
     {
@@ -46,7 +46,7 @@
       ],
       "sets": "1",
       "reps": "1",
-      "max": "5",
+      "max": "020",
       "image": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Bent-Over-Row.gif"
     },
     {
@@ -76,7 +76,7 @@
       ],
       "sets": "1",
       "reps": "1",
-      "max": "10",
+      "max": "30",
       "image": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Deadlift.gif"
     },
     {
@@ -105,7 +105,7 @@
       ],
       "sets": "1",
       "reps": "1",
-      "max": "1",
+      "max": 10,
       "image": "https://fitnessprogramer.com/wp-content/uploads/2021/02/BARBELL-SQUAT.gif"
     },
     {
@@ -126,9 +126,9 @@
         "Triceps",
         "Lateral Deltoids"
       ],
-      "sets": "",
-      "reps": "",
-      "max": "",
+      "sets": "1",
+      "reps": "1",
+      "max": "22",
       "image": "https://fitnessprogramer.com/wp-content/uploads/2021/07/Barbell-Standing-Military-Press.gif"
     }
   ]

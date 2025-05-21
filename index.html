@@ -21,9 +21,9 @@
             <!-- side menu -->
                 <ul class="ui-divided-list" id="exercises">
                     <li id="first" class="exercise-item">BENCH PRESS</li>
-                    <li class="exercise-item active">DEADLIFTS</li>
+                    <li class="exercise-item">DEADLIFTS</li>
                     <li class="exercise-item">SQUATS</li>
-                    <li class="exercise-item">BARBELL ROW</li>
+                    <li class="exercise-item">BARBELL ROW</li>  
                     <li class="exercise-item">OVERHEAD PRESS</li>
                 </ul>
             </div>
@@ -44,7 +44,7 @@
             <div class="stat-container" id="stat-container">
                 <div class="card">
                     <div id="name" class="title">What will you record today?</div>
-                        <div class="stats" id="muscle-targets"><span>Chest</span><span>Triceps</span></div>
+                        <div class="stats" id="muscle-targets"><span>Primary and Secondary Muscles listed here</span></div>
                         <div class="stats"><span class="value" id="weight">WEIGHT</span><span id="currentMax"></span></div>
                         <div class="stats"><span class="value" id="sets"></span> SETS</div>
                         <div class="stats"><span class="value" id="reps"></span> REPS</div>
@@ -52,7 +52,15 @@
                 </div>
             </div>
             <div class="quick-log-input">
-                <div class="title">QUICK LOG</div>
+                <div class="title">QUICK LOG
+                    <div class="form-box">
+		                <div id="button-box" class="button-box">
+			                <div id="btn"></div>
+			                <button type="button" class="toggle-btn">kg</button>
+			                <button type="button" class="toggle-btn">lb</button>
+		            </div>
+	            </div>
+            </div>
                 <form class="log-container">
                     <div class="form-group">
                         <label class="form-label">WEIGHT :</label>
