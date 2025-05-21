@@ -2,9 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Sonsie+One&display=swap');
 
 html body {
+    background-color: rgb(116, 113, 106);
     font-family: "Jost";
     margin: 0;
     overflow-x: auto;
+    color: white;
 }
 
 
@@ -28,21 +30,33 @@ html body {
 }
 
 #subtitle{
-    color: #2979FF;
+    color: #FF7043;
+}
+.sub-heading {
+    padding: 5px 20px ;
+    font-weight: 500;
+    border-bottom: solid 2px black;
 }
 
-.first-column li{
+.exercise-item {
     display: flex;
-    border-radius: 10px;
-    border: 2px solid #2C2C2C;
-    background-color: rgb(194, 192, 192);
+    border-radius: 1em;
+    /* border: 2px solid #2C2C2C; */
+    /* background-color: rgb(194, 192, 192); */
+    background-color: #ffc36f9f;
     width: 95%;
     margin: 15px 2.5px;
     padding: 10px 10px;
+    text-align: center;
     font-size: medium;
     font-weight: 500;
     transition: box-shadow 0.2s ease;
 }
+.exercise-item.active {
+    background-color: whitesmoke;
+    color: #FF7043;
+}
+
 /* .first-column li{
     display: flex;
     border-radius: 100px;
@@ -57,15 +71,14 @@ html body {
 } */
 
 .first-column li:hover {
-    box-shadow:-5px 5px 5px #2979FF
+    box-shadow:-5px 5px 5px #FF7043
 }
-/* #exercises {
-    display: flex;
-    width: auto; 
-} */
-/* #exercises.active {
-    display: flex;
-} */
+#totalVolume {
+    color: rgb(209, 178, 4);
+}
+.value  {
+    color: whitesmoke;
+}
 ul li::before {
     content: "";
 }
@@ -80,13 +93,15 @@ ul {
 .second-column {
     flex-direction: column;
     padding: 15px;
-    border: solid 2px orange;
     min-width: 300px;
     height: fit-content;
 }
-
+#volume {
+    padding-left: 30px ;
+}
 .instruction {
-    padding: 20px 50px;
+    padding: 0px 50px;
+    text-align: center;
 }
 .lrgImg {
     display: flex;
@@ -107,8 +122,7 @@ img {
     min-width: 300px;
     height: fit-content;
     padding: 15px;
-    grid-template-rows: min-content min-content;
-    border: solid 2px yellowgreen;
+    /* grid-template-rows: min-content min-content; */
 }
 
 .log-container {
@@ -131,7 +145,6 @@ button {
 }
 /* testing orientation of stat box */
 .stat-container {
-    border: 1px solid#f39e00;
     background-color: #2C2C2C;
     max-width: 100%;
 }
@@ -140,17 +153,19 @@ button {
 }
 
 .title  {
-    border: 1px solid green;
+    color: #FF7043;
     background-color: white;
-    padding: 10px 10px;
+    padding: 10px 0px 10px 30px;
     font-size: 21px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .stats {
-    margin: 30px;
+    margin: 30px 0px 30px 30px;
     color: whitesmoke;
     font-size: x-large;
+    min-width: fit-content%;
+
 }
 
 .card {
@@ -168,11 +183,11 @@ button {
 }
 
 #prim {
-    background-color: #FF7043 ;
+    background-color: #E97451;
 }
 
 #sec {
-    background-color: #123524;
+    background-color: #568203;
 }
 
 #muscle-targets {
@@ -210,6 +225,8 @@ button {
 }
 
 .positive {
+    position: relative;
+    top: -10px;
     color: greenyellow;
 }
 

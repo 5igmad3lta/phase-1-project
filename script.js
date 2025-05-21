@@ -37,20 +37,28 @@ function handleSubmit(weight, sets, reps) {
 }
 
 function updateLog(data) {
-  let volume = document.querySelector('span#volume').textContent;
+  console.log('before update')
+  let volume = parseInt(document.querySelector('span#volume').textContent);
   let indicator = document.querySelector('span#difference');
   indicator.textContent = "";
+  console.log('before if statement')
+  console.log(indicator)
   if(data.max) {
     let newVolume = parseInt((data.max * data.reps)* data.sets);
     const difference = newVolume - volume;
+    console.log(difference)
     if(difference > 0) {
+      console.log()
       indicator.textContent = " ▲" + difference + " kg";
       indicator.className = "positive"
+      console.log(indicator)
     } else if ( difference < 0) {
       indicator.textContent = " ▼" + Math.abs(difference) + " kg";
       indicator.className = "negative"
+      console.log(indicator)
     } else {
       indicator.className = "neutral"
+      console.log(indicator)
     }
   }
    renderPage(data)
@@ -74,15 +82,23 @@ function retrieveExercise(e) {
   .then(res => res.json())
   .then(data => renderPage(data))
   }
+function activeStatus(data) {
+  document.querySelectorAll('.exercise-item').forEach(item => {
+    item.classList.remove('active')
+  })
+  let activeTag = document.getElementById(data.id);
+  activeTag.classList.add('active');
+}
 
 function renderPage(data) {
+  activeStatus(data);
   document.getElementById('lrgImg').src = data.image;
   document.querySelector('div.title').textContent = data.name.toUpperCase();
   document.querySelector('div.title').id = data.id;
   document.querySelector('span#sets').textContent = data.sets;
   document.querySelector('span#reps').textContent = data.reps;
   document.querySelector('span#currentMax').textContent = data.max;
-  document.querySelector('span#volume').textContent = parseInt((data.max * data.reps) * data.sets);
+  document.querySelector('span#volume').textContent = parseInt((data.max * data.reps) * data.sets) + ' kg';
   const instructions = document.getElementById('instruction');
   instructions.innerHTML = "";
   data.instructions.forEach(line => {
