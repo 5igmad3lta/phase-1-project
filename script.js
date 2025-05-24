@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let form = document.querySelector('form.log-container')
   form.addEventListener('submit', (e) => {
     e.preventDefault()
-    let weight = e.target[0].value;
-    let sets = e.target[1].value;
-    let reps = e.target[2].value;
+    let weight = parseInt(e.target[0].value);
+    let sets = parseInt(e.target[1].value);
+    let reps = parseInt(e.target[2].value);
     handleSubmit(weight, sets, reps)
     form.reset()
   })

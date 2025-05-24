@@ -19,9 +19,9 @@
       "secondary": [
         "Triceps"
       ],
-      "sets": "1",
-      "reps": "1",
-      "max": 20,
+      "sets": 1,
+      "reps": 1,
+      "max": 10,
       "image": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Bench-Press.gif"
     },
     {
@@ -44,9 +44,9 @@
         "Forearm Flexors",
         "Rotator Cuff"
       ],
-      "sets": "1",
-      "reps": "1",
-      "max": "020",
+      "sets": 1,
+      "reps": 1,
+      "max": 2,
       "image": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Bent-Over-Row.gif"
     },
     {
@@ -74,9 +74,9 @@
         "Trapezius",
         "Forearm Flexors"
       ],
-      "sets": "1",
-      "reps": "1",
-      "max": "30",
+      "sets": 1,
+      "reps": 1,
+      "max": 10,
       "image": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Deadlift.gif"
     },
     {
